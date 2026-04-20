@@ -342,7 +342,7 @@ function GetExistingPackageVersions ($PackageName, $GroupId=$null)
 {
   try {
     $PackageName = $PackageName.ToLower()
-    $uri = "https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/flat2/${PackageName}/index.json"
+    $uri = "https://api.nuget.org/v3-flatcontainer/${PackageName}/index.json"
     $existingVersion = Invoke-RestMethod -MaximumRetryCount 3 -RetryIntervalSec 10 -Method GET -Uri $uri
     return $existingVersion.versions
   }
